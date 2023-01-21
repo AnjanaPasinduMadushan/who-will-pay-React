@@ -7,7 +7,7 @@ class MyProvider extends Component{
 
 
     state = {
-        stage: 2
+        stage: 1
     }
 
     render(){
