@@ -20,12 +20,21 @@ class MyProvider extends Component{
         }))
     }
 
+    removePlayerHandler = (idx) =>{
+
+        let newArray = this.state.players;
+        newArray.splice(idx,1);
+
+        this.setState({players:newArray});
+    }
+
     render(){
         return(
             <>
             <Mybill.Provider value ={{
                 state: this.state,
-                addPlayer:this.addPlayerHandler
+                addPlayer:this.addPlayerHandler,
+                removePlayer:this.removePlayerHandler
             }}>
                 {this.props.children}
             </Mybill.Provider>
