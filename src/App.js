@@ -1,8 +1,11 @@
 import React, {useContext} from "react";
 
 import { Mybill } from "./context";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './style/app.css'
+
 import Stage1 from "./components/stage-1";
 import Stage2 from "./components/stage-2";
 

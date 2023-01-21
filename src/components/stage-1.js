@@ -94,7 +94,7 @@ console.log(context.state)
                        }
                     </ul>
                        <div className='action_button' 
-                       onClick={()=>alert("Stage2")}>
+                       onClick={()=>context.next()}>
                         NEXT
                        </div>
 
