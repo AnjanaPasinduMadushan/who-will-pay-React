@@ -3,13 +3,22 @@ import {ToastContainer, toast} from 'react-toastify'
 
 const Mybill = React.createContext();
 
+const DEFAULT_STATE = {
+        stage: 1,
+        players:[],
+        result:''
+}
+
 class MyProvider extends Component{
 
 
-    state = {
+    state = DEFAULT_STATE
+    /*state = {
         stage: 1,
-        players:[]
+        players:[],
+        result:''
     }
+    */
 
     addPlayerHandler = (name) =>{
         this.setState((prevState)=>({
@@ -42,10 +51,22 @@ class MyProvider extends Component{
                 stage:2
             }, ()=>{
                 setTimeout(()=>{
-                    console.log("looser")
+                    this.genarateLooser();
                 }, 2000)
             })
         }
+    }
+
+    genarateLooser = () =>{
+        const {players} = this.state;
+
+        this.setState({
+            result: players[Math.floor(Math.random()*players.length)]
+        })
+    }
+
+    resetGameAgain = () =>{
+        this.setState(DEFAULT_STATE)
     }
 
     render(){
@@ -55,7 +76,9 @@ class MyProvider extends Component{
                 state: this.state,
                 addPlayer:this.addPlayerHandler,
                 removePlayer:this.removePlayerHandler,
-                next:this.nextHandler
+                next:this.nextHandler,
+                getNewLooser:this.genarateLooser,
+                resetGeme:this.resetGameAgain
             }}>
                 {this.props.children}
             </Mybill.Provider>
